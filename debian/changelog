@@ -1,3 +1,10 @@
+conky-toggle-mx (18.03mx17) mx; urgency=medium
+
+  * add toggle affect on autostart 
+  * bring version number in line with othe mx tools
+
+ -- dolphin oracle <dolphin@littlebyte>  Sun, 04 Mar 2018 20:37:00 -0500
+
 conky-toggle-mx (0.9mx17) mx; urgency=low
 
   * Initial package.
