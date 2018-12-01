@@ -1,3 +1,9 @@
+conky-toggle-mx (18.12) mx; urgency=medium
+
+  * change language from conky to desktop monitor 
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Sat, 01 Dec 2018 14:06:27 -0500
+
 conky-toggle-mx (18.03mx17) mx; urgency=medium
 
   * add toggle affect on autostart 

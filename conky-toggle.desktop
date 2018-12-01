@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=Conky Toggle
-Comment=Toggle conky on/off
+Comment=Desktop system monitor on/off
 Icon=mx-conky
 Categories=Utility;System;
 Exec=conkytoggle.sh
