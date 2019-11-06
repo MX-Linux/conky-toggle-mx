@@ -1,3 +1,9 @@
+conky-toggle-mx (19.11) mx; urgency=medium
+
+  * change path to use $HOME variable
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Wed, 06 Nov 2019 18:07:14 -0500
+
 conky-toggle-mx (18.12) mx; urgency=medium
 
   * change language from conky to desktop monitor 
