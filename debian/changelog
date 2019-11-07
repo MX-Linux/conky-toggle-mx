@@ -1,3 +1,9 @@
+conky-toggle-mx (19.11.01) mx; urgency=medium
+
+  * allow for spaces in home folder name 
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Thu, 07 Nov 2019 18:04:18 -0500
+
 conky-toggle-mx (19.11) mx; urgency=medium
 
   * change path to use $HOME variable

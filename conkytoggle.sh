@@ -13,7 +13,7 @@ if pidof conky | grep [0-9] > /dev/null
   killall conky 
   autostart_off
  else
-    test=$(grep -q "conky -c" $HOME/.conky/conky-startup.sh && echo $?)
+    test=$(grep -q "conky -c" "$HOME"/.conky/conky-startup.sh && echo $?)
     if [ "$test" = "0" ]; then
          launch_conky
          autostart_on
@@ -25,20 +25,20 @@ fi
 
 launch_conky()
 {    
-SLEEP=$(grep sleep $HOME/.conky/conky-startup.sh|cut -d\   -f2)
+SLEEP=$(grep sleep "$HOME"/.conky/conky-startup.sh|cut -d\   -f2)
 echo $SLEEP
-sed -i s/sleep.*/sleep\ 1s/ $HOME/.conky/conky-startup.sh
+sed -i s/sleep.*/sleep\ 1s/ "$HOME"/.conky/conky-startup.sh
 
 sh $HOME/.conky/conky-startup.sh &
 
-sed -i s/sleep.*/sleep\ $SLEEP/ $HOME/.conky/conky-startup.sh
+sed -i s/sleep.*/sleep\ $SLEEP/ "$HOME"/.conky/conky-startup.sh
 }
 
 autostart_off()
 {
     
-if [ -e $HOME/.config/autostart/conky.desktop ]; then 
-    sed -i -r s/Hidden=.*/Hidden=true/ $HOME/.config/autostart/conky.desktop
+if [ -e "$HOME"/.config/autostart/conky.desktop ]; then 
+    sed -i -r s/Hidden=.*/Hidden=true/ "$HOME"/.config/autostart/conky.desktop
 fi
 
 }
