@@ -1,7 +1,7 @@
 Source: conky-toggle-mx
 Section: system
 Priority: optional
-Maintainer: Steven Pusser (Stevo) <maintainer@mepiscommunity.org>
+Maintainer: dolphin oracle <dolphinoracle@gmail.com>
 Build-Depends: debhelper (>=7.0)
 Standards-Version: 3.9.5
 
