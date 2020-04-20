@@ -25,13 +25,15 @@ fi
 
 launch_conky()
 {    
-SLEEP=$(grep sleep "$HOME"/.conky/conky-startup.sh|cut -d\   -f2)
-echo $SLEEP
-sed -i s/sleep.*/sleep\ 1s/ "$HOME"/.conky/conky-startup.sh
 
-sh $HOME/.conky/conky-startup.sh &
+CONKY_TEMP=$(mktemp --tmpdir=${XDG_RUNTIME_DIR:-/tmp} conky-startup.sh.XXXXXXXXXXXX)
 
-sed -i s/sleep.*/sleep\ $SLEEP/ "$HOME"/.conky/conky-startup.sh
+sed -e 's/^[[:space:]]*sleep.*/sleep 1s/' "$HOME"/.conky/conky-startup.sh > $CONKY_TEMP
+
+sh $CONKY_TEMP
+
+rm $CONKY_TEMP
+
 }
 
 autostart_off()
