@@ -1,3 +1,10 @@
+conky-toggle-mx (20.04.01) mx; urgency=medium
+
+  *  update for sleep edge case
+  *  compatiblity with conky-manager-2
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Mon, 20 Apr 2020 19:44:33 -0400
+
 conky-toggle-mx (20.03.01) mx; urgency=medium
 
   * update control file 
