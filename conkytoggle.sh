@@ -8,9 +8,10 @@
 
 main()
 {
-if pidof conky | grep [0-9] > /dev/null
+local user=$(id -nu)
+if [ $(pgrep -c -u $user -x conky) != 0 ]
  then
-  killall conky 
+  killall -u $user conky
   autostart_off
  else
     test=$(grep -q "conky -c" "$HOME"/.conky/conky-startup.sh && echo $?)
@@ -24,7 +25,7 @@ fi
 }
 
 launch_conky()
-{    
+{
 
 CONKY_TEMP=$(mktemp --tmpdir=${XDG_RUNTIME_DIR:-/tmp} conky-startup.sh.XXXXXXXXXXXX)
 
@@ -38,8 +39,8 @@ rm $CONKY_TEMP
 
 autostart_off()
 {
-    
-if [ -e "$HOME"/.config/autostart/conky.desktop ]; then 
+
+if [ -e "$HOME"/.config/autostart/conky.desktop ]; then
     sed -i -r s/Hidden=.*/Hidden=true/ "$HOME"/.config/autostart/conky.desktop
 fi
 
@@ -47,8 +48,8 @@ fi
 
 autostart_on()
 {
-    
-if [ -e $HOME/.config/autostart/conky.desktop ]; then 
+
+if [ -e $HOME/.config/autostart/conky.desktop ]; then
     sed -i -r s/Hidden=.*/Hidden=false/ $HOME/.config/autostart/conky.desktop
 fi
 
