@@ -1,3 +1,9 @@
+conky-toggle-mx (22.12.01) mx; urgency=medium
+
+  *  check for running conky of current user only
+
+ -- fehlix <fehlix@mxlinux.org>  Mon, 05 Dec 2022 19:20:33 -0500
+
 conky-toggle-mx (20.04.01) mx; urgency=medium
 
   *  update for sleep edge case
