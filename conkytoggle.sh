@@ -5,23 +5,26 @@
 # Authors:       modified for mx linux version 17 by dolphin oracle
 # Latest change: Sun December 10, 2017.
 ################################################################################
+# Adjusted by fehlix, December 2022 
 
 main()
 {
-local user=$(id -nu)
-if [ $(pgrep -c -u $user -x conky) != 0 ]
- then
-  killall -u $user conky
-  autostart_off
- else
-    test=$(grep -q "conky -c" "$HOME"/.conky/conky-startup.sh && echo $?)
-    if [ "$test" = "0" ]; then
-         launch_conky
-         autostart_on
+    local user=$(id -nu)
+    if [ $(pgrep -c -u "$user" -x conky) != 0 ];  then
+        killall -u "$user" conky
+        autostart_off
     else
-    conky-manager &
+        if grep -q "conky -c" "$HOME"/.conky/conky-startup.sh 2>/dev/null; then
+            launch_conky
+            autostart_on
+        else
+            if command -v conky-manager2 >/dev/null; then
+                conky-manager2 &
+            elif command -v conky-manager >/dev/null; then
+                conky-manager &
+            fi
+        fi
     fi
-fi
 }
 
 launch_conky()
@@ -49,8 +52,8 @@ fi
 autostart_on()
 {
 
-if [ -e $HOME/.config/autostart/conky.desktop ]; then
-    sed -i -r s/Hidden=.*/Hidden=false/ $HOME/.config/autostart/conky.desktop
+if [ -e "$HOME"/.config/autostart/conky.desktop ]; then
+    sed -i -r s/Hidden=.*/Hidden=false/ "$HOME"/.config/autostart/conky.desktop
 fi
 
 }
