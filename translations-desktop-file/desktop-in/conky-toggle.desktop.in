@@ -1,7 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
+# The desktop entry name will be displayed within the menu.
 Name=Conky Toggle
+# # The desktop entry comment will be shown within the menu.
 Comment=Desktop system monitor on or off
 Icon=mx-conky
 Categories=Utility;System;
