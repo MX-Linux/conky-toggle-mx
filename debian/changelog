@@ -1,3 +1,10 @@
+conky-toggle-mx (25.7.01) mx; urgency=medium
+
+  * add support for mx-conky version 25 and up
+  * prefer mx-conky over conky-manager2 if it exists
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Tue, 22 Jul 2025 19:15:39 -0400
+
 conky-toggle-mx (24.3.01) mx; urgency=medium
 
   * update desktop file translations

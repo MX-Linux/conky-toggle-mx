@@ -6,6 +6,7 @@
 # Latest change: Sun December 10, 2017.
 ################################################################################
 # Adjusted by fehlix, December 2022 
+# Adjusted for new mx-conky July 2025
 
 main()
 {
@@ -18,12 +19,26 @@ main()
             launch_conky
             autostart_on
         else
-            if command -v conky-manager2 >/dev/null; then
-                conky-manager2 &
-            elif command -v conky-manager >/dev/null; then
-                conky-manager &
-            fi
-        fi
+        
+			version_check=$(dpkg-query -W -f='${Version}\n' mx-conky |cut -d"." -f1)
+			echo $version_check
+			min_version=25  # Target as an integer
+
+			if [[ $version_check -ge $min_version ]]; then
+				if command -v mx-conky >/dev/null; then
+					mx-conky &
+					exit 0
+				fi    
+            else
+            	if command -v conky-manager2 >/dev/null; then
+                	conky-manager2 &
+                	exit 0
+            	elif command -v conky-manager >/dev/null; then
+                	conky-manager &
+                	exit 0
+            	fi
+        	fi
+    	fi
     fi
 }
 
