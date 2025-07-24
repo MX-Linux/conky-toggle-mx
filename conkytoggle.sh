@@ -12,7 +12,7 @@ main()
 {
 #migrate desktop autostart file if necessary
     if [ -f "$HOME/.config/autostart/conky.desktop" ]; then
-        sed 's#.conky/conky-startup.sh#/usr/share/mx-conky-data/conky-startup.sh#' "$HOME/.config/autostart/conky.desktop"
+        sed -i 's#.conky/conky-startup.sh#/usr/share/mx-conky-data/conky-startup.sh#' "$HOME/.config/autostart/conky.desktop"
     fi
     local user=$(id -nu)
     if [ $(pgrep -c -u "$user" -x conky) != 0 ];  then
