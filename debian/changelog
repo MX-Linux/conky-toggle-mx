@@ -1,6 +1,7 @@
 conky-toggle-mx (25.7.02) mx; urgency=medium
 
-  * point desktop file at generic /usr/share/mx-conky-data/conky-startup.sh
+  * point desktop file at generic /usr/share/mx-conky-data/conky-startup.sh.
+  * migrate existing home folder desktop files
 
  -- Dolphin Oracle <dolphinoracle@gmail.com>  Wed, 23 Jul 2025 20:10:11 -0400
 
