@@ -11,7 +11,7 @@
 main()
 {
 #migrate desktop autostart file if necessary
-    if [ -e "$HOME/.config/autostart/conky.desktop" ]; then
+    if [ -f "$HOME/.config/autostart/conky.desktop" ]; then
         sed 's#.conky/conky-startup.sh#/usr/share/mx-conky-data/conky-startup.sh#' "$HOME/.config/autostart/conky.desktop"
     fi
     local user=$(id -nu)
@@ -21,7 +21,7 @@ main()
         exit 0
     fi
     #check for empty user .conky/conky-startup.sh
-    if [ -e "$HOME"/.conky/conky-startup.sh ]; then
+    if [ -f "$HOME"/.conky/conky-startup.sh ]; then
         if grep -q "conky -c" "$HOME"/.conky/conky-startup.sh 2>/dev/null; then
             launch_conky
             autostart_on
@@ -59,7 +59,7 @@ launch_conky()
 
 FILE="$HOME/.conky/conky-startup.sh"
 
-if [ ! -e "$HOME/.conky/conky-startup.sh" ]; then
+if [ ! -f "$HOME/.conky/conky-startup.sh" ]; then
 	FILE="/usr/share/mx-conky-data/conky-startup.sh"
 fi
 
@@ -76,7 +76,7 @@ rm $CONKY_TEMP
 
 autostart_off()
 {
-if [ ! -e "$HOME"/.config/autostart/conky.desktop ]; then
+if [ ! -f "$HOME"/.config/autostart/conky.desktop ]; then
     /usr/bin/cp /usr/share/conky-toggle/conky.desktop "$HOME"/.config/autostart/conky.desktop
 fi
 /usr/bin/sed -i -r s/Hidden=.*/Hidden=true/ "$HOME"/.config/autostart/conky.desktop
@@ -85,7 +85,7 @@ fi
 
 autostart_on()
 {
-if [ ! -e "$HOME"/.config/autostart/conky.desktop ]; then
+if [ ! -f "$HOME"/.config/autostart/conky.desktop ]; then
    /usr/bin/cp /usr/share/conky-toggle/conky.desktop "$HOME"/.config/autostart/conky.desktop
 fi
 /usr/bin/sed -i -r s/Hidden=.*/Hidden=false/ "$HOME"/.config/autostart/conky.desktop
