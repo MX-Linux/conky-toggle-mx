@@ -14,12 +14,14 @@ main()
     if [ $(pgrep -c -u "$user" -x conky) != 0 ];  then
         /usr/bin/killall -u "$user" conky
         autostart_off
-    else
+        exit 0
+    fi
+    #check for empty user .conky/conky-startup.sh
+    if [ -e "$HOME"/.conky/conky-startup.sh ]; then
         if grep -q "conky -c" "$HOME"/.conky/conky-startup.sh 2>/dev/null; then
             launch_conky
             autostart_on
         else
-        
 			version_check=$(dpkg-query -W -f='${Version}\n' mx-conky |cut -d"." -f1)
 			echo $version_check
 			min_version=25  # Target as an integer
@@ -39,15 +41,28 @@ main()
             	fi
         	fi
     	fi
-    fi
+    else
+		echo "launch"
+		autostart_on
+		launch_conky
+	fi
 }
 
 launch_conky()
 {
 
+#check for existing conky-startup.sh file
+
+FILE="$HOME/.conky/conky-startup.sh"
+
+if [ ! -e "$HOME/.conky/conky-startup.sh" ]; then
+	FILE="/usr/share/mx-conky-data/conky-startup.sh"
+fi
+
+echo $FILE
 CONKY_TEMP=$(mktemp --tmpdir=${XDG_RUNTIME_DIR:-/tmp} conky-startup.sh.XXXXXXXXXXXX)
 
-/usr/bin/sed -e 's/^[[:space:]]*sleep.*/sleep 1s/' "$HOME"/.conky/conky-startup.sh > $CONKY_TEMP
+/usr/bin/sed -e 's/^[[:space:]]*sleep.*/sleep 1s/' "$FILE" > $CONKY_TEMP
 
 sh $CONKY_TEMP
 
