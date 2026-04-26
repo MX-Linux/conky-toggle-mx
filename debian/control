@@ -2,8 +2,8 @@ Source: conky-toggle-mx
 Section: system
 Priority: optional
 Maintainer: dolphin oracle <dolphinoracle@gmail.com>
-Build-Depends: debhelper (>=7.0)
-Standards-Version: 3.9.5
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.5.1
 
 Package: conky-toggle-mx
 Architecture: all
