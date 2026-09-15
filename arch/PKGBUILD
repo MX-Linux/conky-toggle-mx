@@ -35,4 +35,8 @@ package() {
     # Install desktop files
     install -Dm644 conky-toggle.desktop "${pkgdir}/usr/share/applications/conky-toggle.desktop"
     install -Dm644 conky.desktop "${pkgdir}/usr/share/conky-toggle/conky.desktop"
+    # namcap flags a declared license= with nothing under
+    # /usr/share/licenses. The file is in the source; it was simply never
+    # installed.
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
